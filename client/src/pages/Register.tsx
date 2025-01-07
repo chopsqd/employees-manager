@@ -78,16 +78,16 @@ export const Register = () => {
             />
           </Form.Item>
 
-          <Button type={"primary"} htmlType={"submit"}>
-            Зарегистрироваться
-          </Button>
-        </Form>
+          <Space size={"large"}>
+            <Button type={"primary"} htmlType={"submit"}>
+              Зарегистрироваться
+            </Button>
 
-        <Space direction={"vertical"} size={"large"}>
-          <Typography.Text>
-            Уже есть аккаунт? <Link to={"/register"}>Войдите</Link>
-          </Typography.Text>
-        </Space>
+            <Typography.Text>
+              Уже есть аккаунт? <Link to={"/login"}>Войдите</Link>
+            </Typography.Text>
+          </Space>
+        </Form>
       </Card>
     </Row>
   );
