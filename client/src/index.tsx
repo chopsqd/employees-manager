@@ -3,7 +3,8 @@ import { RouterProvider } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { ConfigProvider, theme } from "antd";
 import { Provider } from "react-redux";
-import { store } from "./store/main";
+import { AuthProvider } from "./components";
+import { store } from "./store/store";
 import { router } from "./router";
 import "./index.css";
 
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </ConfigProvider>
     </Provider>
   </React.StrictMode>
