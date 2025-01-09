@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./services/api";
-import auth from "./slices/authSlice";
+import { auth, employees } from "./slices";
 import { listenerMiddleware } from "../middleware/auth";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    auth
+    auth, employees
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware).prepend(listenerMiddleware.middleware)

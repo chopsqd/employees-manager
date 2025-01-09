@@ -1,14 +1,15 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../components";
-import { Login, Register } from "../pages";
+import { Employees, Login, Register } from "../pages";
 
 export const router = createBrowserRouter([
   {
-    element: <Layout/>,
+    element: <Layout />,
     children: [
       {
         path: "/",
-        element: <Login />
+        element: <Employees />
       },
       {
         path: "/login",
