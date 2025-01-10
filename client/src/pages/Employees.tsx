@@ -15,14 +15,14 @@ const COLUMNS: ColumnsType<EmployeeType> = [
 
 export const Employees = () => {
   useRequireAuth();
-  
+
   const navigate = useNavigate();
   const { data, isLoading } = useGetAllEmployeesQuery();
 
   return (
     <div>
       <Button
-        onClick={() => null}
+        onClick={() => navigate("/employee/add")}
         icon={<PlusCircleOutlined />}
       >
         Добавить
