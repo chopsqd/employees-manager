@@ -7,8 +7,8 @@ import { isErrorWithMessage } from "../utils/is-error-with-message";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [loginMutation] = useLoginMutation();
   const [error, setError] = useState("");
+  const [loginMutation] = useLoginMutation();
 
   const login = async (data: UserType) => {
     try {

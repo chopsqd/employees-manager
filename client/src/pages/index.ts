@@ -3,3 +3,4 @@ export * from "./Login";
 export * from "./Employees";
 export * from "./AddEmployee";
 export * from "./ShowStatus";
+export * from "./EmployeeInfo";

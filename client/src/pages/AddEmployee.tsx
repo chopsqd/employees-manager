@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row } from "antd";
-import { EmployeeForm } from "../components";
 import { useNavigate } from "react-router-dom";
+import { EmployeeForm } from "../components";
 import useRequireAuth from "../hooks/useRequireAuth";
 import { useAddEmployeeMutation } from "../store/services/employees";
 import { EmployeeType } from "../types/user.types";
@@ -11,8 +11,8 @@ export const AddEmployee = () => {
   useRequireAuth();
 
   const navigate = useNavigate();
-  const [addEmployee] = useAddEmployeeMutation();
   const [error, setError] = useState("");
+  const [addEmployee] = useAddEmployeeMutation();
 
   const handleAddEmployee = async (data: EmployeeType) => {
     try {
