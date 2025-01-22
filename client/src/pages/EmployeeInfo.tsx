@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Descriptions, Row, Spin, Typography, Divider, Space, Button, Alert, Modal } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Alert, Button, Descriptions, Divider, Modal, Row, Space, Spin, Typography } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { useGetEmployeeQuery, useRemoveEmployeeMutation } from "../store/services/employees";
 import { selectUser } from "../store/slices/authSlice";
-import { EmployeeType } from "../types/user.types";
 import { isErrorWithMessage } from "../utils/is-error-with-message";
 
 export const EmployeeInfo = () => {

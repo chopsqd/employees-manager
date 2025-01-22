@@ -1,12 +1,35 @@
-import React from "react";
-import { Button, Card, Form, Input, Row, Space, Typography } from "antd";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Alert, Button, Card, Form, Input, Row, Space, Typography } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "../store/services/auth";
+import useRequireAuth from "../hooks/useRequireAuth";
+import { UserType } from "../types/user.types";
+import { isErrorWithMessage } from "../utils/is-error-with-message";
 
 export const Register = () => {
+  useRequireAuth();
+
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [registerUser] = useRegisterMutation();
+
+  const register = async (data: UserType) => {
+    try {
+      await registerUser(data).unwrap();
+      navigate("/");
+    } catch (err) {
+      if (isErrorWithMessage(err)) {
+        setError(err.data.message);
+      } else {
+        setError("Неизвестная ошибка");
+      }
+    }
+  };
+
   return (
     <Row align={"middle"} justify={"center"}>
       <Card title={"Зарегистрируйтесь"} style={{ width: "30rem" }}>
-        <Form onFinish={() => null}>
+        <Form onFinish={register}>
           <Form.Item
             name={"name"}
             rules={[{ required: true, message: "Обязательное поле" }]}
@@ -88,6 +111,8 @@ export const Register = () => {
             </Typography.Text>
           </Space>
         </Form>
+
+        {error && <Alert message={error} type="error" />}
       </Card>
     </Row>
   );
